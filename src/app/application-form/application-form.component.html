@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-box">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="label-input">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="formData.name" required>
+      </div>
+
+      <div class="label-input">
+        <label for="contactNo">Contact No:</label>
+        <input type="tel" id="contactNo" name="contactNo" [(ngModel)]="formData.contactNo" pattern="^\d{10}$" required>
+        <div id="contactNoError" *ngIf="userForm.controls['contactNo'].invalid && userForm.controls['contactNo'].touched" class="error">
+          Please enter a valid 10-digit contact number.
+        </div>
+      </div>
+
+      <div class="label-input">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+        <div id="emailError" *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="error">
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <button id="submitButton" type="submit" [disabled]="userForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>
