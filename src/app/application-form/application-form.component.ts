@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-application-form',
@@ -11,11 +10,30 @@ export class ApplicationFormComponent {
   userForm: any;
 
   onSubmit() {
-    // Handle form submission logic here, e.g., send data to a server or perform actions.
     if (this.userForm.valid) {
       console.log('Form submitted with data:', this.formData);
-      // Here, you can make an HTTP request to send the data to a server.
+      alert('Form submitted successfully!');
+    } else {
+      this.alertInvalidFields();
     }
+  }
+
+  alertInvalidFields() {
+    const invalidFields = [];
+
+    if (this.userForm.controls['name'].invalid) {
+      invalidFields.push('Name');
+    }
+
+    if (this.userForm.controls['contactNo'].invalid) {
+      invalidFields.push('Contact No');
+    }
+
+    if (this.userForm.controls['email'].invalid) {
+      invalidFields.push('Email');
+    }
+
+    alert(`Please fill in or correct the following fields: ${invalidFields.join(', ')}`);
   }
 
   // Expose user information through an API

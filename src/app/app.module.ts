@@ -13,7 +13,7 @@ import { ApplicationFormComponent } from './application-form/application-form.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
